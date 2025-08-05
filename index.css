@@ -1,0 +1,15 @@
+/*universal*/
+*{ 
+    color: red;
+}
+/*tag selector*/
+p {
+    color: green;
+
+}
+#a{
+    color: gray;
+}
+.b{
+    color: blue;
+}
