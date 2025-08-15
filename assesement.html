@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 20px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 16px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        table {
+            border: 1px solid #ddd;
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:hover {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Student List</h1>
+    <button onclick="toggleBackground()">Toggle Background</button>
+    <button onclick="toggleTable()">Hide/Show Table</button>
+    <button onclick="showAgeAbove20()">Show Age > 20</button>
+    <button onclick="renderTable(students)">Show All</button>
+
+    <div id="tableContainer"></div>
+
+    <script>
+        const students = [
+            { name: "Amit Sharma", age: 19, course: "B.Tech" },
+            { name: "Priya Verma", age: 22, course: "MCA" },
+            { name: "Rohit Gupta", age: 20, course: "BCA" },
+            { name: "Neha Singh", age: 23, course: "B.Sc" },
+            { name: "Karan Patel", age: 18, course: "B.Com" }
+        ];
+
+        let isLightGray = true;
+        let tableVisible = true;
+
+        function renderTable(data) {
+            const container = document.getElementById("tableContainer");
+            container.innerHTML = ""; // Clear previous table
+
+            const table = document.createElement("table");
+            const thead = document.createElement("thead");
+            const headerRow = document.createElement("tr");
+
+            ["Name", "Age", "Course"].forEach(text => {
+                const th = document.createElement("th");
+                th.textContent = text;
+                headerRow.appendChild(th);
+            });
+
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
+
+            const tbody = document.createElement("tbody");
+            data.forEach(student => {
+                const row = document.createElement("tr");
+                Object.values(student).forEach(value => {
+                    const td = document.createElement("td");
+                    td.textContent = value;
+                    row.appendChild(td);
+                });
+                tbody.appendChild(row);
+            });
+
+            table.appendChild(tbody);
+            container.appendChild(table);
+        }
+
+        function toggleBackground() {
+            document.body.style.backgroundColor = isLightGray ? "#e0f7fa" : "#f8f9fa";
+            isLightGray = !isLightGray;
+        }
+
+        function toggleTable() {
+            const container = document.getElementById("tableContainer");
+            tableVisible = !tableVisible;
+            container.style.display = tableVisible ? "block" : "none";
+        }
+
+        function showAgeAbove20() {
+            const filtered = students.filter(s => s.age > 20);
+            renderTable(filtered);
+        }
+
+        // Initial render
+        renderTable(students);
+    </script>
+
+</body>
+</html>
