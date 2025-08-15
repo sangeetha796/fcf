@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assessment 9</title>
+  <style>
+    body {
+         font-family: Roboto; 
+         padding: 20px;
+         background: #9696c0; }
+    .gallery {
+         display: grid; 
+         grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+         gap: 12px; }
+    .card { background: #fff; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); overflow: hidden; }
+    .card img { width: 100%; height: 180px; object-fit: cover; }
+    .caption { padding: 8px; font-size: 14px; color: #000000; }
+    h1{background-color: aquamarine;color: black; text-align: center;}
+    h3{
+        background-color: brown;
+        color:white;
+        text-align: center;
+    }
+   
+  </style>
+</head>
+<body>
+  <h1>Movie Images</h1>
+  <div id="gallery" class="gallery"></div>
+  <h3>
+    My movie gallery|
+    Made by:sangeetha| 
+    email:san@gmail.com
+    </h3>
+
+  <script>
+    for (let id = 5; id <= 14; id++) {
+      document.getElementById("gallery").innerHTML += `
+        <div class="card">
+          <img src="https://via.assets.so/movie.png?id=${id}&q=95&w=360&h=360&fit=fill"
+          alt="Movie ${id}">
+          <div class="caption"> id=${id}</div>
+        </div>`;
+    }
+  </script>
+</body>
+</html>

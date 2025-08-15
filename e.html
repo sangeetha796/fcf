@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            background-color: lightblue;
+            padding: 15px;
+        }
+
+        .highlight {
+            color: crimson;
+        }
+
+        .intro {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        blockquote {
+            font-style: italic;
+            border-left: 4px solid gray;
+            margin: 10px;
+            padding-left: 10px;
+        }
+
+        .dummy-img {
+            display: block;
+            margin: 10px auto;
+            max-width: 90%;
+            border: 1px solid #ccc;
+        }
+
+        table {
+            width: 80%;
+            margin: 10px auto;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #888;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        input, button {
+            margin: 5px;
+            padding: 5px;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #ddd;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Welcome to <span class="highlight">My Website</span></h1>
+        <p><em>Advanced HTML, CSS & JS Example</em></p>
+    </header>
+
+    <!-- Intro -->
+    <section class="intro" onclick="changeTextColor(this)">
+        Click me to change my color! This is a <strong>more challenging</strong> HTML page for students.  
+        Famous quote: <q>Learning never exhausts the mind.</q>  
+        Code example: <code>console.log("Hello World")</code>
+    </section>
+
+    <!-- Quote -->
+    <blockquote>"The best way to predict the future is to create it." – Abraham Lincoln</blockquote>
+
+    <!-- Image -->
+    <img src="https://via.placeholder.com/600x100?text=Dummy+Image" alt="Dummy Image" class="dummy-img">
+
+    <!-- Student Table -->
+     <h2>Student Data Table</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Course</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John Doe</td>
+                <td>20</td>
+                <td>Computer Science</td>
+            </tr>
+            <tr>
+                <td>JaneSmith</td>
+                <td>22</td>
+                <td>Information Technology</td>
+            </tr>
+            <tr>
+                <td>Sam Wilson</td>
+                <td>19</td>
+                <td>Data Analytics</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Skills List -->
+    <h2>Top Skills</h2>
+    <ul id="skillsList">
+        <li>HTML
+            <ul>
+                <li>Tags</li>
+                <li>Attributes</li>
+                <li>Forms</li>
+            </ul>
+        </li>
+        <li>CSS
+            <ul>
+                <li>Selectors</li>
+                <li>Box Model</li>
+                <li>Positioning</li>
+            </ul>
+        </li>
+        <li>JavaScript
+            <ul>
+                <li>DOM</li>
+                <li>Events</li>
+                <li>Functions</li>
+            </ul>
+        </li>
+    </ul>
+    <input type="text" id="newSkill" placeholder="Enter new skill">
+    <button onclick="addSkill()">Add Skill</button>
+
+    <!-- Contact Form -->
+    <h2>Contact Form</h2>
+    <form id="contactForm">
+        <label>Name:</label>
+        <input type="text" name="name" required><br>
+        <label>Email:</label>
+        <input type="email" name="email" required><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Fun Zone -->
+    <h2>Fun Zone</h2>
+    <button onclick="changeBackground()">Change Background Color</button>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 My Website | Created with ❤ using HTML, CSS & JS</p>
+    </footer>
+
+    <script>
+        function changeTextColor(element) {
+            element.style.color = element.style.color === "red" ? "black" : "red";
+        }
+
+        function addSkill() {
+            let skillInput = document.getElementById("newSkill");
+            let skill = skillInput.value.trim();
+
+            if (skill) {
+                let li = document.createElement("li");
+                li.textContent = skill;
+                document.getElementById("skillsList").appendChild(li);
+                skillInput.value = "";
+            }
+        }
+
+        function changeBackground() {
+            document.body.style.backgroundColor =
+                document.body.style.backgroundColor === "lightpink" ? "white" : "lightpink";
+        }
+
+        document.getElementById("contactForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            alert("Form submitted successfully!");
+        });
+    </script>
+</body>
+</html>
